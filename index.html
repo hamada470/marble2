@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
+    <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18421209027"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
@@ -8,6 +9,15 @@
       gtag('js', new Date());
 
       gtag('config', 'AW-18421209027');
+
+      // دالة تتبع التحويل عند الضغط على أزرار الاتصال والواتساب
+      function trackCallClick() {
+        gtag('event', 'conversion', {
+          'send_to': 'AW-18421209027',
+          'event_category': 'Contact',
+          'event_label': 'Phone Call Click'
+        });
+      }
     </script>
 
     <meta charset="UTF-8">
@@ -188,7 +198,7 @@
                 <span>مقاول رخام وتفصيل مغاسل</span>
             </div>
         </div>
-        <a href="tel:0569629485" class="btn-call-head"><i class="fa-solid fa-phone"></i> 0569629485</a>
+        <a href="tel:0569629485" class="btn-call-head" onclick="trackCallClick();"><i class="fa-solid fa-phone"></i> 0569629485</a>
     </header>
 
     <section class="hero">
@@ -196,8 +206,8 @@
         <h1>أفضل معلم رخام ومعلم تركيب رخام بالرياض <br><span>تفصيل مغاسل رخام مودرن وتفصيل مغاسل طبيعي وصناعي وتركيب الدرج</span></h1>
         <p>نقدم خدمات متكاملة بصفتنا أفضل <strong>معلم رخام</strong>، <strong>معلم رخام بالرياض</strong>، و<strong>معلم تركيب رخام بالرياض</strong>. متخصصون في <strong>تفصيل مغاسل رخام</strong>، <strong>تفصيل مغاسل</strong>، <strong>مغاسل رخام</strong>، وتصميم <strong>مغاسل رخام مودرن</strong>، بالإضافة إلى <strong>تركيب الرخام</strong> للأرضيات والواجهات وتفصيل درج الرخام وكاونترات المطابخ والمدافئ وجلي وتلميع الرخام بجودة عالية.</p>
         <div class="hero-btns">
-            <a href="https://wa.me/966569629485" class="btn-wa"><i class="fa-brands fa-whatsapp"></i> واتساب مباشر</a>
-            <a href="tel:0569629485" class="btn-ph"><i class="fa-solid fa-phone"></i> اتصل بنا الآن</a>
+            <a href="https://wa.me/966569629485" class="btn-wa" onclick="trackCallClick();"><i class="fa-brands fa-whatsapp"></i> واتساب مباشر</a>
+            <a href="tel:0569629485" class="btn-ph" onclick="trackCallClick();"><i class="fa-solid fa-phone"></i> اتصل بنا الآن</a>
         </div>
     </section>
 
@@ -353,7 +363,7 @@
     </footer>
 
     <!-- زر الهاتف العائم -->
-    <a href="tel:0569629485" class="call-float" aria-label="Call"><i class="fa-solid fa-phone"></i></a>
+    <a href="tel:0569629485" class="call-float" aria-label="Call" onclick="trackCallClick();"><i class="fa-solid fa-phone"></i></a>
 
     <!-- نافذة وزر محادثة الواتساب العائم التفاعلي -->
     <button class="wa-float-btn" id="waFloatBtn" onclick="toggleWaChat()" aria-label="WhatsApp Chat">
@@ -386,7 +396,7 @@
             <button class="wa-send-btn" onclick="sendWaCustom()"><i class="fa-solid fa-paper-plane"></i></button>
         </div>
         <div class="wa-direct-call">
-            أو اتصل مباشرة: <a href="tel:0569629485">0569629485</a>
+            أو اتصل مباشرة: <a href="tel:0569629485" onclick="trackCallClick();">0569629485</a>
         </div>
     </div>
 
@@ -417,11 +427,13 @@
         }
 
         function sendWaPreset(text) {
+            trackCallClick();
             const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(text)}`;
             window.open(url, '_blank');
         }
 
         function sendWaCustom() {
+            trackCallClick();
             const input = document.getElementById('waCustomMsg');
             const text = input.value.trim();
             if(text !== "") {
